@@ -26,7 +26,7 @@ flores_mapping = {
         'source': ('Tamil-English', 'ta_en'),
         'target': ('Czech', 'cz')
     },
-    'mt_enghinglish': {
+    'hindi_english': {
         'source': ('Hindi-English', 'hi_en'),
         'target': ('English', 'en')
     }
@@ -44,10 +44,10 @@ async def translate(engine: LLMEngine, model_name: str, num_test: int = -1):
     
         source_sentences = []
         target_sentences = []
-        with open(f'{folder}/{source_file}.txt', 'r') as in_file:
+        with open(f'data/{folder}/{source_file}.txt', 'r') as in_file:
             for line in in_file:
                 source_sentences.append(line.strip())
-        with open(f'{folder}/{target_file}.txt', 'r') as in_file:
+        with open(f'data/{folder}/{target_file}.txt', 'r') as in_file:
             for line in in_file:
                 target_sentences.append(line.strip())
         assert len(target_sentences) == len(source_sentences)
@@ -83,7 +83,7 @@ async def run():
     model_names = [
         ('openai', 'gpt-4o'),
         ('openai', 'gpt-3.5-turbo'),
-        ('fireworks', 'accounts/fireworks/models/llama-v3-70b-instruct-hf')
+        # ('fireworks', 'accounts/fireworks/models/llama-v3-70b-instruct-hf')
     ]
     api_keys = {
         'openai': 'sk-proj-xxx'
